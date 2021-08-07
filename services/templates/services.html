@@ -1,0 +1,97 @@
+  {% extends 'base.html' %}
+
+  {% load static lawyer_card %}
+
+ {% block content %}
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_2.jpg' %});" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate pb-5 text-center">
+
+              {% if messages %}
+            <div class="messages">
+              {% for message in messages %}
+              <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message|safe }}</div>
+              {% endfor %}
+            </div>
+            {% endif %}
+          <!--эта часть для вывода зеленого сообщения-->
+
+            <h1 class="mb-3 bread">Услуги</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Главная <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="#skrolform">Услуги <i class="ion-ios-arrow-forward"></i></a></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 order-md-last ftco-animate">
+          	<p>
+<!--               <img src="images/practice-1.jpg" alt="" class="img-fluid">-->
+            </p>
+            <h2 class="mb-3" id="skrolform">Наши услуги:</h2>
+              <br>
+              <br>
+
+              {% for servicesdescription in service.all%}
+			  <div class="half d-flex img">
+    				<div class="overlay"></div>
+    				<div class="desc">
+    					<a href="{% url 'services_details' servicesdescription.id %}"><h2 class="mb-3">{{ servicesdescription.title }}</h2></a>
+						<p>{{ servicesdescription.get_summary }}</p>
+    				</div>
+    			</div>
+              <br>
+              <br>
+			  {% endfor %}
+
+<!--            <h2 class="mb-3 mt-5">How Can We Help !</h2>-->
+<!--            <p>Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>-->
+             <div> <!--class="row d-md-flex"-->
+    			<div class="half p-3 ftco-animate">  <!--p-3 p-md-5-->
+    				<h3 class="mb-4">Бесплатная консультация</h3>
+
+					<form id="contactForm" method="post">
+                        {% csrf_token %}
+	                    <div class="form-group">
+					        {{ form.as_p }}
+	                    </div>
+				        <div class="form-group">
+                	        <input type="submit" value="Отправить заявку" class="btn btn-primary py-3 px-5">
+              	        </div>
+	                </form>
+
+    			</div>
+    		</div>
+<!--            <p><a href="#" class="btn btn-primary">Запросить бесплатную консультацию</a></p>-->
+
+            <div class="row mt-5 pt-5">
+		          <div class="col-md-12">
+		            <h2 class="mb-4 font-weight-bold">Наши юридические консультанты</h2>
+		          </div>
+
+                {% get_lawyer_card %}
+
+            </div>
+
+
+
+
+
+<!--            <div class="sidebar-box ftco-animate">-->
+<!--              <h3>Paragraph</h3>-->
+<!--              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>-->
+<!--            </div>-->
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- .section -->
+ {% endblock content %}

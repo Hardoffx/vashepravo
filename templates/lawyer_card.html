@@ -1,0 +1,27 @@
+				{% for lawyercard in lawyercard.all%}
+				<div class="col-lg-6">
+		        		<div class="block-2 ftco-animate">
+			            <div class="flipper">
+			              <div class="front" style="background-image: url({{ lawyercard.image.url }});">
+			                <div class="box">
+			                  <h2>{{ lawyercard.name }}</h2>
+			                  <p>{{ lawyercard.lawyer_classification }}</p>
+			                </div>
+			              </div>
+			              <div class="back">
+			                <!-- back content -->
+			                <blockquote>
+			                  <p>&ldquo;{{ lawyercard.text }}&rdquo;</p>
+			                </blockquote>
+			                <div class="author d-flex">
+			                  <div class="image mr-3 align-self-center">
+<!--								  фото в окошке-->
+			                    <img src="{{ lawyercard.image.url }}" alt="">
+			                  </div>
+			                  <div class="name align-self-center">{{ lawyercard.name }}<span class="position">{{ lawyercard.lawyer_classification }}</span></div>
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+                </div>
+				{% endfor %}

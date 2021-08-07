@@ -1,0 +1,256 @@
+  {% extends 'base.html' %}
+
+  {% load static %}
+
+
+ {% block content %}
+    <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_1.jpg' %});" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+
+			  {% if messages %}
+            <div class="messages">
+              {% for message in messages %}
+              <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message|safe }}</div>
+              {% endfor %}
+            </div>
+            {% endif %}
+          <!--эта часть для вывода зеленого сообщения-->
+
+          	<h2 class="subheading" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Мы здесь, чтобы помочь!</h2>
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+            	<span>Опыт</span> . <span>Инновации</span> . <span>Совершенство</span> .
+            </h1>
+            <p><a href="#skrolform" class="btn btn-primary py-3 px-4">Запросить бесплатную консультацию</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-no-pb services-section">
+      <div class="container">
+        <div class="row no-gutters d-flex">
+
+			{% for infobox in bases.all %}
+
+          <div class="col-md-3 text-center services align-self-stretch ftco-animate p-4">
+            <div class="icon"><span class="material-icons">{{ infobox.icon }}</span></div>
+            <div class="media-body">
+              <h3 class="heading mb-3"><a href="#">{{ infobox.title }}</a></h3>
+              <p>{{ infobox.content }}</p>
+            </div>
+          </div>
+			{% endfor %}
+
+	</section>
+
+    <section class="ftco-counter" id="section-counter">
+    	<div class="container-fluid">
+    		<div class="row d-flex">
+
+				{% for uploadvideo in uploadvideo.all %}
+    			<div class="col-md-6 d-flex">
+    				<div class="img d-flex align-self-stretch align-items-center justify-content-center" style="background-image:url({{ uploadvideo.preview.url }});">
+    					<a href="{{ uploadvideo.video.url }}" class="icon-video d-flex justify-content-center align-items-center">
+    						<span class="icon-play"></span>
+    					</a>
+    				</div>
+    			</div>
+				{% endfor %}
+
+    			<div class="col-md-6 px-5 py-5">
+    				<div class="row justify-content-start pt-3 pb-3">
+		          <div class="col-md-12 heading-section ftco-animate">
+		          	<span class="subheading">Факты о нас</span>
+		            <h2 class="mb-4">Юридическая фирма <br> Ваше Право, основанная с 2012 года.</h2>
+		            <p>Мы представляем итересы наших клиентов в лучших практиках мировой юриспрюденции.</p>
+		          </div>
+		        </div>
+		    		<div class="row">
+
+					{% for achievementblock in achievementblock.all %}
+		          <div class="col-md-6 justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center py-4 bg-light mb-4">
+		              <div class="text">
+		              	<div class="icon d-flex justify-content-center align-items-center">
+		              		<span class="material-icons">{{ achievementblock.icon }}</span>
+		              	</div>
+		                <strong class="number" data-number="{{ achievementblock.amount }}">0</strong>
+		                <span>{{ achievementblock.text }}</span>
+		              </div>
+		            </div>
+		          </div>
+					{% endfor %}
+
+		        </div>
+	        </div>
+        </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section bg-light">
+    	<div class="container">
+
+
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Чем мы занимаемся</span>
+            <h2 class="mb-4">Области практики</h2>
+          </div>
+        </div>
+
+
+        <div class="row d-flex justify-content-center">
+
+			{% for practiceareas in practicereas.all %}
+        	<div class="col-md-3 col-lg-2 text-center">
+        		<div class="practice-area ftco-animate">
+        			<div class="icon d-flex justify-content-center align-items-center">
+						<span class="material-icons md-36">{{ practiceareas.icon }}</span>
+        			</div>
+        			<h3><a href="{% url 'services' %}{{ practiceareas.createid }}">{{ practiceareas.title }}</a></h3>
+        		</div>
+        	</div>
+			{% endfor %}
+
+
+        </div>
+    	</div>
+	</section>
+
+    <section class="ftco-section bg-secondary">
+    	<div class="container-fluid">
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+          	<span class="subheading">Им доверяют сотни клиентов!</span>
+            <h2 class="mb-4">Наши юристы</h2>
+          </div>
+        </div>
+        <div class="row">
+
+			{% for lawyercard in lawyercard.all%}
+        	<div class="col-lg-3 col-sm-6">
+        		<div class="block-2 ftco-animate">
+	            <div class="flipper">
+<!--					фото юриста-->
+	              <div class="front" style="background-image: url({{ lawyercard.image.url }});">
+	                <div class="box">
+<!--						имя фамилия юриста-->
+	                  <h2>{{ lawyercard.name }}</h2>
+<!--						практикующие направление юриста-->
+	                  <p>{{ lawyercard.lawyer_classification }}</p>
+	                </div>
+	              </div>
+	              <div class="back">
+	                <blockquote>
+<!--						текст сзади карточки-->
+	                  <p>&ldquo;{{ lawyercard.text }}&rdquo;</p>
+	                </blockquote>
+	                <div class="author d-flex">
+	                  <div class="image mr-3 align-self-center">
+<!--						  фото в окошке-->
+	                    <img src="{{ lawyercard.image.url }}" alt="">
+	                  </div>
+	                  <div class="name align-self-center">{{ lawyercard.name }}<span class="position">{{ lawyercard.lawyer_classification }}</span></div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+        	</div>
+			 {% endfor %}
+
+        </div>
+    	</div>
+    </section>
+
+
+		<section class="ftco-consultation">
+    	<div class="container-fluid">
+    		<div class="row d-md-flex">
+
+                {% for vashepravoimg in vashepravoimg.all%}
+    			<div class="half d-flex justify-content-center align-items-center img" style="background-image: url({{ vashepravoimg.image.url }});">
+
+    				<div class="overlay"></div>
+    				<div class="desc text-center">
+    					<div class="icon"><span class="material-icons md-36">{{ vashepravoimg.icon }}</span></div>
+    					<h1><a href="{% url 'home' %}">{{ vashepravoimg.title }}<br><span>{{ vashepravoimg.text }}</span></a></h1>
+    				</div>
+    			</div>
+                {% endfor %}
+
+    			<div class="half p-3 p-md-5 ftco-animate">
+    				<h3 class="mb-4" id="skrolform">Бесплатная консультация</h3>
+
+					<form id="contactForm" method="post">
+						{% csrf_token %}
+	            <div class="form-group">
+					{{ form.as_p }}
+	            </div>
+				<div class="form-group">
+                	<input type="submit" value="Отправить заявку" class="btn btn-primary py-3 px-5">
+              	</div>
+	          </form>
+
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+    <section class="ftco-section testimony-section bg-secondary">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+          	<span class="subheading">Отзывы</span>
+            <h2 class="mb-4">Довольные клиенты</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
+
+			{% for reviews in reviews.all %}
+              <div class="item">
+                <div class="testimony-wrap text-center py-4 pb-5">
+                  <div class="user-img mb-4" style="background-image: url({{ reviews.image.url }})">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text p-3">
+                    <p class="mb-4">{{ reviews.text }}</p>
+                    <p class="name">{{ reviews.name }}</p>
+                    <span class="position">Клиент</span>
+                  </div>
+                </div>
+              </div>
+				{% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="ftco-gallery">
+    	<div class="container-wrap">
+    		<div class="row no-gutters">
+
+            {% for gallery in gallery.all %}
+				<div class="col-md-3 ftco-animate">
+					<a href="{{ gallery.image.url }}" class="gallery image-popup img d-flex align-items-center" style="background-image: url({{ gallery.image.url }});">
+						<div class="icon mb-4 d-flex align-items-center justify-content-center">
+    						<span class="icon-instagram"></span>
+    					</div>
+                    </a>
+                </div>
+            {% endfor %}
+
+			</div>
+        </div>
+    	</div>
+    </section>
+ {% endblock content %}

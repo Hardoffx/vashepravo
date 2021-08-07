@@ -1,0 +1,90 @@
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+  <div class="container">
+    <div class="row mb-5">
+      <!-- начало левой колонки -->
+      <div class="col-md">
+        <div class="ftco-footer-widget mb-3">
+          <h2 class="ftco-heading-2">Контакты</h2>
+          <ul class="list-unstyled">
+
+            {% for footernumber in footernumber.all %}
+            <li><a href="#" class="py-2 d-block"><span class="icon icon-phone mr-3"></span><span class="text">{{ footernumber.number }}</span></a></li>
+            {% endfor %}
+
+            {% for email in email.all %}
+            <li><a href="mailto:{{ email.create_email }}" class="py-2 d-block"><span class="icon icon-envelope mr-3"></span><span class="text">{{ email.create_email }}</span></a></li>
+            {% endfor %}
+
+            {% for vklink in vklink.all %}
+            <li><a href="{{ vklink.create_vk_link }}" class="py-2 d-block"><span class="icon icon-envelope mr-3"></span><span class="text">{{ vklink.name_vk }}</span></a></li>
+            {% endfor %}
+          </ul>
+
+        </div>
+      </div>
+      <!-- конец левой колонки -->
+      <div class="col-md">
+        <div class="ftco-footer-widget mb-4 ml-md-5">
+          <h2 class="ftco-heading-2">Области практики</h2>
+          <ul class="list-unstyled">
+
+            {% for practiceareas in practicereas.all %}
+            <li><a href="{% url 'services' %}{{ practiceareas.createid }}" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>{{ practiceareas.title }}</a></li>
+            {% endfor %}
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md">
+         <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">Часы работы</h2>
+          <div class="opening-hours">
+            <h4>Дни работы:</h4>
+            <p class="pl-3">
+              {% for workhours in workhours.all %}
+              <span>{{ workhours.work_days_1 }}<br>{{ workhours.work_tim_1 }}<br></span>
+              {% endfor %}
+
+              {% for workhours in workhours.all %}
+              <span><br>{{ workhours.work_days_2 }}<br>{{ workhours.work_time_2 }}</span>
+              {% endfor %}
+            </p>
+            <h4>Выходные:</h4>
+            <p class="pl-3">
+              {% for workhours in workhours.all %}
+              <span>{{ workhours.week_days }}<br></span>
+              {% endfor %}
+
+              {% for workhours in workhours.all %}
+              <span>{{ workhours.holidays }}</span>
+              {% endfor %}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">Есть вопросы?</h2>
+          <div class="block-23 mb-3">
+            <ul>
+              {% for havequestions in havequestions.all%}
+              <li><span class="icon icon-map-marker"></span><span class="text">{{ havequestions.address }}</span></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+
+        <p>
+&copy;<script>document.write(new Date().getFullYear());</script> Все права защещины | Правообладатель <i aria-hidden="true"></i> <a href="#" target="_blank">Ваше Право <i class="flaticon-shield"></i></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
