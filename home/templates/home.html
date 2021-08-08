@@ -185,14 +185,14 @@
     				<h3 class="mb-4" id="skrolform">Бесплатная консультация</h3>
 
 					<form id="contactForm" method="post">
-						{% csrf_token %}
-	            <div class="form-group">
-					{{ form.as_p }}
-	            </div>
-				<div class="form-group">
-                	<input type="submit" value="Отправить заявку" class="btn btn-primary py-3 px-5">
-              	</div>
-	          </form>
+					{% csrf_token %}
+	            		<div class="form-group">
+							{{ form.as_p }}
+	            		</div>
+						<div class="form-group">
+                			<input type="submit" value="Отправить заявку" class="btn btn-primary py-3 px-5">
+              			</div>
+	          		</form>
 
     			</div>
     		</div>
@@ -227,7 +227,6 @@
                 </div>
               </div>
 				{% endfor %}
-
             </div>
           </div>
         </div>

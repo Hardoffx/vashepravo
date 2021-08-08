@@ -144,7 +144,7 @@ class VkLink(models.Model):
 
 
 class WorkHours(models.Model):
-    name_adm = models.CharField(max_length=35, verbose_name='Имя для отображения в админке, можно не менят)',
+    name_adm = models.CharField(max_length=35, verbose_name='Имя для отображения в админке, можно не менять',
                                    default='Рабочие дни и часы в неделе')
     work_days_1 = models.CharField(max_length=35, verbose_name='Рабочии дни с Пн по Пт',
                                    default='Понедельник - пятница:')
@@ -171,8 +171,8 @@ class HaveQuestions(models.Model):
     address = models.CharField(max_length=150, verbose_name='Введите Адрес организации')
 
     class Meta:
-        verbose_name = 'Настройка Адресов'
-        verbose_name_plural = 'Настройка Адреса'
+        verbose_name = 'Настройка Адресов в футере'
+        verbose_name_plural = 'Настройка Адреса в футере'
 
     def __str__(self):
         return self.address

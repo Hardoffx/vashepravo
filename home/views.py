@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView
 from .models import Infobox, AchievementBlock, UploadVideo, PracticeAreas, LawyerCard, VashePravoImg, Reviews,\
     Gallery, FooterNumber, Email, VkLink, WorkHours, HaveQuestions
 
+
 from contact.forms import ContactForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -32,6 +33,7 @@ def home(request):
             return HttpResponseRedirect('/')
     else:
         f = ContactForm()
+
     return render(request, 'home.html', {'bases': bases,
                                          'achievementblock': achievementblock,
                                          'uploadvideo': uploadvideo,

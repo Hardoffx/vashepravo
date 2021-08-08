@@ -34,16 +34,26 @@
           </div>
           <div class="w-100"></div>
           <div class="col-md-3">
-            <p><span>Адрес</span> <br> <a href="#">г.Красный Луч, <br> ул.Магистральная 62-л <br>(Детский Мир 2 этаж )</a></p>
+            <!--Адресс-->
+            {% for havequestions in havequestions.all %}
+              <p><span>Адрес</span> <br> <a href="#">{{ havequestions.address }}</a></p>
+            {% endfor %}
+
           </div>
           <div class="col-md-3">
-            <p><span>Phone</span> <a href="tel://1234567920"><br>+380(50)273-67-98</a></p>
+            {% for footernumber in footernumber.all %}
+              <p><span>Phone</span> <a href="tel:{{ footernumber.number }}"><br>{{ footernumber.number }}</a></p>
+            {% endfor %}
           </div>
           <div class="col-md-3">
-            <p><span>Email</span> <a href="mailto:jurist_vashe_pravo@mail.ua">jurist_vashe_pravo@mail.ua</a></p>
+            {% for email in email.all %}
+            <p><span>Email</span> <a href="mailto:{{ email.create_email }}">{{ email.create_email }}</a></p>
+            {% endfor %}
           </div>
           <div class="col-md-3">
-            <p><span>Веб-сайт</span> <a href="https://vashe-pravo.com.ua"><br>vashe-pravo.com.ua</a></p>
+            {% for website in website.all %}
+              <p><span>Веб-сайт</span> <a href="https://vashe-pravo.com.ua"><br>{{ website.name_web_site }}</a></p>
+            {% endfor %}
           </div>
         </div>
         <div class="row block-9">
@@ -62,7 +72,7 @@
           </div>
 
           <div class="col-lg-6 d-flex">
-          	<div id="map" class="bg-white"></div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.6834302445077!2d38.93008491533213!3d48.13562805927623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40e04a923a579445%3A0x2f1bc03f9866c846!2z0YPQuy4g0JzQsNCz0LjRgdGC0YDQsNC70YzQvdCw0Y8sIDYyLCDQpdGA0YPRgdGC0LDQu9GM0L3Ri9C5LCDQm9GD0LPQsNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsIDk0NTAw!5e0!3m2!1sru!2sua!4v1628406126148!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
       </div>
