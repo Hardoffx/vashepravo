@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import Infobox, AchievementBlock, UploadVideo, PracticeAreas, LawyerCard, VashePravoImg, Reviews,\
-    Gallery, FooterNumber, WorkHours, Email, VkLink, HaveQuestions
+    Gallery, FooterNumber, WorkHours, Email, VkLink, HaveQuestions, BackgroundHome
 
 
 admin.site.register(Infobox)
@@ -17,3 +17,4 @@ admin.site.register(Email)
 admin.site.register(VkLink)
 admin.site.register(WorkHours)
 admin.site.register(HaveQuestions)
+admin.site.register(BackgroundHome)

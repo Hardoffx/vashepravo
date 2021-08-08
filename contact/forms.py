@@ -6,7 +6,7 @@ class ContactForm(forms.ModelForm):
                                                          'class': 'form-control', 'placeholder': 'Ваше имя'}),
                                     label='', required=False)
     email = forms.CharField(widget=forms.TextInput(attrs={'type': 'text',
-                                                          'class': 'form-control', 'placeholder': 'Ваш Email'}),
+                                                          'class': 'form-control', 'placeholder': 'Ваш номер телефона'}),
                                     label='', required=False)
     title = forms.CharField(widget=forms.TextInput(attrs={'type': 'text',
                                                           'class': 'form-control', 'placeholder': 'Предмет обращения'}),

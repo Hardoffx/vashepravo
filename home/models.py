@@ -177,3 +177,15 @@ class HaveQuestions(models.Model):
     def __str__(self):
         return self.address
 
+
+class BackgroundHome(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Имя фото для отображения в админке',
+                            default='Background на Главной')
+    image = models.ImageField(upload_to='backgroundHome_images', verbose_name='Дабавьте фото')
+
+    class Meta:
+        verbose_name = 'Background Фото на Главной'
+        verbose_name_plural = 'Background Фото на Главной'
+
+    def __str__(self):
+        return self.name

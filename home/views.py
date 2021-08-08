@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 
 from .models import Infobox, AchievementBlock, UploadVideo, PracticeAreas, LawyerCard, VashePravoImg, Reviews,\
-    Gallery, FooterNumber, Email, VkLink, WorkHours, HaveQuestions
+    Gallery, FooterNumber, Email, VkLink, WorkHours, HaveQuestions, BackgroundHome
 
 
 from contact.forms import ContactForm
@@ -24,6 +24,7 @@ def home(request):
     vklink = VkLink.objects
     workhours = WorkHours.objects
     havequestions = HaveQuestions.objects
+    backgroundhome = BackgroundHome.objects
 
     if request.method == 'POST':
         f = ContactForm(request.POST)
@@ -47,6 +48,7 @@ def home(request):
                                          'vklink': vklink,
                                          'workhours': workhours,
                                          'havequestions': havequestions,
+                                         'backgroundhome': backgroundhome,
 
                                          'form': f,
                                          })

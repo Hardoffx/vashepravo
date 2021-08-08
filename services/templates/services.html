@@ -2,9 +2,13 @@
 
   {% load static lawyer_card %}
 
+  {% block title %}Услуги - Ваше право{% endblock %}
+
  {% block content %}
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_2.jpg' %});" data-stellar-background-ratio="0.5">
+    {% for backgroundservices in backgroundservices.all %}
+    <section class="hero-wrap hero-wrap-2" style="background-image: url({{ backgroundservices.image.url }});" data-stellar-background-ratio="0.5">
+    {% endfor %}
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">

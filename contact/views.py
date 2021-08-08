@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
 from home.models import HaveQuestions, FooterNumber, Email
-from .models import WebSite
+from .models import WebSite, BackgroundContact
 
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -14,6 +14,7 @@ def contact(request):
     havequestions = HaveQuestions.objects
     footernumber = FooterNumber.objects
     email = Email.objects
+    backgroundcontact = BackgroundContact.objects
 
     if request.method == 'POST':
         f = ContactForm(request.POST)
@@ -28,6 +29,7 @@ def contact(request):
                                             'footernumber': footernumber,
                                             'email': email,
                                             'website': website,
+                                            'backgroundcontact': backgroundcontact,
 
                                             'form': f,
                                             })

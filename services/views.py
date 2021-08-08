@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from .models import ServicesDescription
+from .models import ServicesDescription, BackgroundServices
 
 from contact.forms import ContactForm
 from django.contrib import messages
@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 
 def services(request):
     service = ServicesDescription.objects
+    backgroundservices = BackgroundServices.objects
 
     if request.method == 'POST':
         f = ContactForm(request.POST)
@@ -20,8 +21,9 @@ def services(request):
         f = ContactForm()
 
     return render(request, 'services.html', {'service': service,
-                                             'form': f,
+                                             'backgroundservices': backgroundservices,
 
+                                             'form': f,
                                              })
 
 
